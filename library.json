@@ -5,5 +5,12 @@
         "author": "Author1",
         "year": 1,
         "status": "в наличии"
+    },
+    {
+        "id": "0df84cfd-383c-4de7-aab7-1a15dc30ba19",
+        "title": "Book2",
+        "author": "Author1",
+        "year": 1999,
+        "status": "выдана"
     }
 ]

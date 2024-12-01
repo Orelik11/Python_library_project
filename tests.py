@@ -32,7 +32,7 @@ class TestLibrary(unittest.TestCase):
     def test_delete_nonexistent_book(self):
         with self.assertLogs() as log:
             self.library.delete_book("nonexistent-id")
-            self.assertIn("Ошибка: Книга с ID nonexistent-id не найдена.", log.output[0])
+            self.assertIn("CRITICAL:root:Ошибка: Книга с ID nonexistent-id не найдена.", log.output)
 
     def test_search_books_by_title(self):
         self.library.add_book("Python Programming", "Author A", 2021)
@@ -65,7 +65,7 @@ class TestLibrary(unittest.TestCase):
         book_id = self.library.books[0].id
         with self.assertLogs() as log:
             self.library.change_status(book_id, "недоступна")
-            self.assertIn("Ошибка: Недопустимый статус. Возможные значения: 'в наличии', 'выдана'.", log.output[0])
+            self.assertIn("CRITICAL:root:Ошибка: Недопустимый статус. Возможные значения: 'в наличии', 'выдана'.", log.output)
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,4 +1,5 @@
 import json
+import logging
 import os
 import uuid
 from typing import List, Dict, Any
@@ -89,9 +90,9 @@ class Library:
             if book.id == book_id:
                 self.books.remove(book)
                 self.save_books()
-                print(f"Книга с ID {book_id} удалена.")
+                logging.log(msg=f"Книга с ID {book_id} удалена.", level=20)
                 return
-        print(f"Ошибка: Книга с ID {book_id} не найдена.")
+        logging.log(msg=f"Ошибка: Книга с ID {book_id} не найдена.", level=50)
 
     def search_books(self, **kwargs):
         """
@@ -124,7 +125,7 @@ class Library:
         Изменяет статус книги по ID.
         """
         if new_status not in ["в наличии", "выдана"]:
-            print("Ошибка: Недопустимый статус. Возможные значения: 'в наличии', 'выдана'.")
+            logging.log(msg="Ошибка: Недопустимый статус. Возможные значения: 'в наличии', 'выдана'.", level=50)
             return
         for book in self.books:
             if book.id == book_id:
